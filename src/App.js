@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import data from "./data";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <a href="/">amazona</a>
       </header>
+      <main>
+        <h1>Featured Products</h1>
+
+        <div className="products">
+          {data?.products.map((item, idx) => (
+            <div className="product" key={idx}>
+              <a href={`/product/${item.slug}`} >
+                <img src={item.image} alt={item.name} />
+              </a>
+              <div className="product-info">
+                <a href={`/product/${item.slug}`} >
+                  <p>{item.name}</p>
+                </a>
+                <p>$ {item.price}</p>
+                <button>Add To Cart</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
     </div>
   );
 }
