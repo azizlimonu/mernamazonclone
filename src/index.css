@@ -12,36 +12,46 @@ code {
     monospace;
 }
 
-main{
+main {
   padding: 1rem;
+}
+
+.btn-primary {
+  background-color: #f0c040;
+  color: #000;
+}
+
+.rating span {
+  color: #ffc000;
 }
 
 header {
   background-color: #404040;
   padding: 1rem;
 }
+
 header a {
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
 }
 
-.products{
+.products {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.product{
+.product {
   border: 1px solid #404040;
   margin: 1rem;
 }
 
-.product img{
+.product img {
   width: 100%;
   max-width: 300px;
 }
 
-.product-info{
+.product-info {
   padding: 1rem;
 }
