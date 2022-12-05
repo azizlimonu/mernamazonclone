@@ -3,7 +3,7 @@ import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Product} from '../components';
+import { Product } from '../components';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -51,7 +51,7 @@ const HomeScreen = () => {
             : (
               <Row>
                 {state?.products?.map((product) => (
-                  <Col key={product.slug} sm={6} lg={3} className='mb-3' >
+                  <Col key={product.slug} lg={3} md={"auto"} sm={6} className='mb-3' >
                     <Product product={product}></Product>
                   </Col>
                 ))}
