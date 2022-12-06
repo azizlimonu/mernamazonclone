@@ -13,6 +13,9 @@ import Navbar from 'react-bootstrap/Navbar';
 // pages&component
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
+
+// utils
 import { Store } from './store';
 
 function App() {
@@ -50,6 +53,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeScreen />} />
             <Route path="/product/:slug" element={<ProductScreen />} />
+            <Route path='/cart' element={<CartScreen />} />
           </Routes>
         </Container>
       </main >
