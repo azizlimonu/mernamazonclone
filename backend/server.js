@@ -1,3 +1,5 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
 const express = require("express");
 const data = require('./data.js');
 const cors = require('cors');
@@ -7,6 +9,11 @@ const app = express();
 const corsOptions = {
   origin: ['http://localhost:3000'],
 };
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => { console.log('connected to mongoDB') })
+  .catch((error) => console.log('connecting failed', error.message));
 
 app.use(cors(corsOptions));
 
