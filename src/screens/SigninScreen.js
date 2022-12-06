@@ -10,7 +10,7 @@ const SigninScreen = () => {
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
   return (
-    <Container className='small-container'>
+    <Container style={{"maxWidth":"640px"}}>
       <Helmet>
         <title>Sign In</title>
       </Helmet>
@@ -32,7 +32,7 @@ const SigninScreen = () => {
         </div>
 
         <div className="mb-3">
-          New customer?{' '}
+          Dont Have an Account?{' '}
           <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
         </div>
       </Form>
