@@ -4,10 +4,7 @@ import ProductScreen from "./screens/ProductScreen";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
-// Bootstrap CSS
-import "bootstrap/dist/css/bootstrap.min.css";
-// Bootstrap Bundle JS
-import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 function App() {
   return (
@@ -27,7 +24,7 @@ function App() {
 
       {/* main section */}
       <main>
-        <Container>
+        <Container className='mt-3'>
           <Routes>
             <Route path='/' element={<HomeScreen />} />
             <Route path="/product/:slug" element={<ProductScreen />} />
