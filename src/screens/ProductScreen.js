@@ -11,6 +11,8 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,9 +56,9 @@ const ProductScreen = () => {
   return (
     <>
       {loading
-        ? <p>Loading...</p>
+        ? (<Loading />)
         : error
-          ? <p>Error Occured</p>
+          ? (<Error variant='danger'>{error}</Error>)
           : (
             <div>
               <Row>

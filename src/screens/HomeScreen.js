@@ -1,9 +1,13 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
+// component
+import { Product } from '../components';
+import Loading from '../components/Loading';
+import Error from '../components/Error';
+// bootsrap
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Product } from '../components';
 import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
@@ -49,9 +53,9 @@ const HomeScreen = () => {
       <h1>Featured Products</h1>
       <div className="products">
         {state?.loading
-          ? ("Loading...")
+          ? (<Loading />)
           : state.error
-            ? "Error Occured"
+            ? (<Error variant='danger'>{state.error}</Error>)
             : (
               <Row>
                 {state?.products?.map((product) => (
