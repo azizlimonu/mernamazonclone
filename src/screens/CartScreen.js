@@ -1,6 +1,6 @@
 // utils
 import { useContext } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Store } from '../store';
 
@@ -16,7 +16,7 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
 const CartScreen = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   // destructuring cartItems from state from the state.cart
   const {
@@ -38,6 +38,10 @@ const CartScreen = () => {
 
   const removeItemHandler = (item) => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+
+  const checkoutHandler = () => {
+    navigate('/signin?redirect=/shipping');
   };
 
   return (
@@ -121,6 +125,7 @@ const CartScreen = () => {
                     <Button
                       type="button"
                       variant="primary"
+                      onClick={checkoutHandler}
                       disabled={cartItems.length === 0}
                     >
                       Proceed to Checkout
