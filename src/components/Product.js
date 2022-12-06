@@ -38,9 +38,19 @@ const Product = ({ product }) => {
         <Link to={`/product/${product.slug}`}>
           <Card.Title>{product.name}</Card.Title>
         </Link>
+
         <Rating rating={product.rating} numReviews={product.numReviews} />
+
         <Card.Text>${product.price}</Card.Text>
-        <Button onClick={() => addToCartHandler(product)}>Add to cart</Button>
+        {product.countInStock === 0 ? (
+          <Button variant='light' disabled>
+            Out Of Stock
+          </Button>
+        ) : (
+          <Button onClick={() => addToCartHandler(product)}>
+            Add to cart
+          </Button>
+        )}
       </Card.Body>
     </Card>
   )

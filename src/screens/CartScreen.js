@@ -1,6 +1,6 @@
 // utils
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Store } from '../store';
 
@@ -13,13 +13,32 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
 
 const CartScreen = () => {
+  // const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   // destructuring cartItems from state from the state.cart
   const {
     cart: { cartItems }
   } = state;
+
+  // cart functionality
+  const updateCartHandler = async (item, quantity) => {
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...item, quantity },
+    });
+  };
+
+  const removeItemHandler = (item) => {
+    ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
 
   return (
     <div>
@@ -46,6 +65,7 @@ const CartScreen = () => {
                     <Row className="align-items-center">
                       <Col md={4}>
                         <img
+                          style={{ "height": "80px" }}
                           src={item.image}
                           alt={item.name}
                           className="img-fluid rounded img-thumbnail"
@@ -54,7 +74,7 @@ const CartScreen = () => {
                       </Col>
                       <Col md={3}>
                         <Button
-                          // onClick={() => updateCartHandler(item, item.quantity - 1)}
+                          onClick={() => updateCartHandler(item, item.quantity - 1)}
                           variant="light"
                           disabled={item.quantity === 1}
                         >
@@ -63,7 +83,7 @@ const CartScreen = () => {
                         <span>{item.quantity}</span>{' '}
                         <Button
                           variant="light"
-                          // onClick={() => updateCartHandler(item, item.quantity + 1)}
+                          onClick={() => updateCartHandler(item, item.quantity + 1)}
                           disabled={item.quantity === item.countInStock}
                         >
                           <i className="fas fa-plus-circle"></i>
@@ -72,7 +92,7 @@ const CartScreen = () => {
                       <Col md={3}>${item.price}</Col>
                       <Col md={2}>
                         <Button
-                          // onClick={() => removeItemHandler(item)}
+                          onClick={() => removeItemHandler(item)}
                           variant="light"
                         >
                           <i className="fas fa-trash"></i>
