@@ -1,14 +1,19 @@
+// dep
 import { Route, Routes } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import ProductScreen from "./screens/ProductScreen";
-import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+// bootstrap
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import Badge from 'react-bootstrap/Badge';
 import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+// pages&component
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 import { Store } from './store';
-import { useContext } from "react";
-import { Link } from "react-router-dom";
 
 function App() {
   const { state } = useContext(Store);
@@ -30,7 +35,7 @@ function App() {
                 Cart
                 {cart?.cartItems?.length > 0 && (
                   <Badge pill bg='danger'>
-                    {cart?.cartItems?.length}
+                    {cart.cartItems.reduce((acc, cur) => acc + cur.quantity, 0)}
                   </Badge>
                 )}
               </Link>
