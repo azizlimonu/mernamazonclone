@@ -10,8 +10,10 @@ const corsOptions = {
   origin: ['http://localhost:3000'],
 };
 
+mongoose.set('strictQuery', true);
+
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGODB_URI)
   .then(() => { console.log('connected to mongoDB') })
   .catch((error) => console.log('connecting failed', error.message));
 
