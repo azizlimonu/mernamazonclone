@@ -10,6 +10,7 @@ const app = express();
 const seedRouter = require('./routes/seedRoutes');
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
+const orderRouter= require('./routes/orderRoutes');
 
 const corsOptions = {
   origin: ['http://localhost:3000'],
@@ -31,6 +32,7 @@ app.use(cors(corsOptions));
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders',orderRouter);
 
 // middleware
 app.use((err, req, res, next) => {
