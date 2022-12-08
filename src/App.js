@@ -19,6 +19,7 @@ import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SigninScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
+import SignupScreen from "./screens/SignupScreen";
 
 // utils
 import { Store } from './store';
@@ -90,6 +91,7 @@ function App() {
             <Route path='/cart' element={<CartScreen />} />
             <Route path='/signin' element={<SigninScreen />} />
             <Route path='/shipping' element={<ShippingAddressScreen />} />
+            <Route path='/signup' element={<SignupScreen />} />
           </Routes>
         </Container>
       </main >

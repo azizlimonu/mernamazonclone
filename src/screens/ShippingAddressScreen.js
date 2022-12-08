@@ -22,7 +22,7 @@ const ShippingAddressScreen = () => {
 
   useEffect(() => {
     if (!userInfo) {
-      navigate('signin?redirect=/shipping');
+      navigate('/signin?redirect=/shipping');
     }
   }, [userInfo, navigate])
 
@@ -52,7 +52,7 @@ const ShippingAddressScreen = () => {
         <title>Shipping Address</title>
       </Helmet>
 
-      <CheckoutSteps />
+      <CheckoutSteps step1 step2></CheckoutSteps>
       <div className='container small-container' style={{ "maxWidth": "600px" }}>
         <h1 className='my-3'>Shipping Address</h1>
 
