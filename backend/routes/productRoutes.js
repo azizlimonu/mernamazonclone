@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
 // get product by slug
 router.get('/slug/:slug', async (req, res) => {
-  const product = await Product.findOne((x) => x.slug === req.params.slug);
+  const product = await Product.findOne({ slug: req.params.slug });
   if (product) {
     res.send(product);
   } else {
@@ -21,7 +21,7 @@ router.get('/slug/:slug', async (req, res) => {
 
 // get product by id
 router.get('/:id', async (req, res) => {
-  const product = await Product.findOne({ slug: req.params.slug });
+  const product = await Product.findById(req.params.id);
   if (product) {
     res.send(product);
   } else {

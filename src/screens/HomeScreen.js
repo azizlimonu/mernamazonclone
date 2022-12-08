@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 // component
 import { Product } from '../components';
 import Loading from '../components/Loading';
@@ -29,7 +29,7 @@ const HomeScreen = () => {
     loading: false,
     error: '',
   }
-  const [state, dispatch] = useReducer(logger(reducer), initialState);
+  const [state, dispatch] = useReducer((reducer), initialState);
 
   useEffect(() => {
     const fetchData = async () => {

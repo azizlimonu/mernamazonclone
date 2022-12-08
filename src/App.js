@@ -18,6 +18,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import SigninScreen from "./screens/SigninScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 
 // utils
 import { Store } from './store';
@@ -88,6 +89,7 @@ function App() {
             <Route path="/product/:slug" element={<ProductScreen />} />
             <Route path='/cart' element={<CartScreen />} />
             <Route path='/signin' element={<SigninScreen />} />
+            <Route path='/shipping' element={<ShippingAddressScreen />} />
           </Routes>
         </Container>
       </main >
