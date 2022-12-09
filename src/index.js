@@ -5,6 +5,8 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { StoreProvider } from './store';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
@@ -16,7 +18,9 @@ root.render(
     <BrowserRouter>
       <StoreProvider>
         <HelmetProvider>
-          <App />
+          <PayPalScriptProvider deferLoading={true}>
+            <App />
+          </PayPalScriptProvider>
         </HelmetProvider>
       </StoreProvider>
     </BrowserRouter>

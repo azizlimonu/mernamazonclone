@@ -28,6 +28,11 @@ mongoose
 
 app.use(cors(corsOptions));
 
+// paypal
+app.get('/api/keys/paypal',(req,res)=>{
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
+
 // router
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
