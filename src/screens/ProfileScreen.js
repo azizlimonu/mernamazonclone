@@ -42,9 +42,10 @@ const ProfileScreen = () => {
     }
     try {
       const { data } = await axios.put(
-        'http://localhost:5500/api/users/profile/:id', { name, email, password }, {
-        headers: { Authorization: `Bearer ${userInfo.token}` }
-      });
+        'http://localhost:5500/api/users/profile', { name, email, password, },
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
       dispatch({ type: 'UPDATE_SUCCESS' });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
@@ -59,7 +60,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <div className='small-contaienr container'>
+    <div style={{ "width": '600px' }} className='small-container container'>
       <Helmet>
         <title>User Profile</title>
       </Helmet>
