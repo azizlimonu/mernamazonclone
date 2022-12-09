@@ -47,7 +47,7 @@ router.put('/:id/pay', isAuth, expressAsyncHandler(async (req, res) => {
   }
 }));
 
-router.get('/mine', isAuth, expressAsyncHandler(async (req, res) => {
+router.get('/:id/mine', isAuth, expressAsyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
   res.send(orders);
 }));

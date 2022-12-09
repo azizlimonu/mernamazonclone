@@ -6,7 +6,7 @@ import Loading from '../components/Loading';
 import Error from '../components/Error';
 import { Store } from '../store';
 import { getError } from '../utils/getError';
-import { Button } from 'bootstrap';
+import Button from 'react-bootstrap/esm/Button';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -35,9 +35,10 @@ const OrderHistoryScreen = () => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get('http://localhost:5500/api/orders/mine', {
-          headers: { Authorization: `Bearer ${userInfo.token}` }
-        });
+        const { data } = await axios.get(
+          `http://localhost:5500/api/orders/${userInfo._id}/mine`,
+          { headers: { Authorization: `Bearer ${userInfo.token}` } }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
         dispatch({
@@ -45,7 +46,7 @@ const OrderHistoryScreen = () => {
           payload: getError(error),
         });
       }
-    }
+    };
     fetchData();
   }, [userInfo])
 
@@ -58,10 +59,10 @@ const OrderHistoryScreen = () => {
       <h1>Order History</h1>
       {loading ? <Loading /> : error ? <Error variant='danger'>{error}</Error> :
         (
-          <table>
+          <table className="table">
             <thead>
               <tr>
-                <th>ID</th>
+                <th>ORDER ID</th>
                 <th>DATE</th>
                 <th>TOTAL</th>
                 <th>PAID</th>
@@ -71,8 +72,8 @@ const OrderHistoryScreen = () => {
             </thead>
 
             <tbody>
-              {orders?.map((order) => (
-                <tr key={order.id}>
+              {orders.map((order) => (
+                <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice.toFixed(2)}</td>
@@ -82,17 +83,16 @@ const OrderHistoryScreen = () => {
                       ? order.deliveredAt.substring(0, 10)
                       : 'No'}
                   </td>
-
                   <td>
-                    <Button
-                      type="button"
-                      variant="light"
-                      onClick={() => {
-                        navigate(`/order/${order._id}`);
-                      }}
-                    >
-                      Details
-                    </Button>
+                  <Button
+                    type="button"
+                    variant="info"
+                    onClick={() => {
+                      navigate(`/order/${order._id}`);
+                    }}
+                  >
+                    Details
+                  </Button>
                   </td>
                 </tr>
               ))}
