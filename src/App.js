@@ -23,6 +23,7 @@ import SignupScreen from "./screens/SignupScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 
 // utils
 import { Store } from './store';
@@ -43,7 +44,7 @@ function App() {
       <ToastContainer position="bottom-center" limit={1} />
       {/* header */}
       <header>
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" expand='lg'>
           <Container>
             {/* brand */}
             <LinkContainer to="/">
@@ -100,6 +101,7 @@ function App() {
             <Route path='/payment' element={<PaymentMethodScreen />} />
             <Route path='/placeorder' element={<PlaceOrderScreen />} />
             <Route path='/order/:id' element={<OrderScreen />} />
+            <Route path='/orderhistory' element={<OrderHistoryScreen />} />
           </Routes>
         </Container>
       </main >
